@@ -33,7 +33,7 @@ public:
 
 } // namespace
 
-namespace WinLaunchException {
+namespace winlaunch {
 
 std::string to_hex_string(int i) {
     std::stringstream stream{};
@@ -92,7 +92,7 @@ std::string errcode_to_string(unsigned long code) noexcept {
 std::string get_process_dir() {
     std::vector<wchar_t> vec{};
     vec.resize(MAX_PATH);
-    unsigned long success = GetModuleFileName(nullptr, vec.data(), vec.size());
+    auto success = GetModuleFileName(nullptr, vec.data(), static_cast<DWORD>(vec.size()));
     if (0 == success) throw WinLaunchException(std::string("Error getting current executable dir,") +
             " error: [" + errcode_to_string(GetLastError()) + "]");
     auto path = narrow(vec.data(), vec.size());

@@ -1,7 +1,7 @@
 #include <winuser.h>
 
 // icon
-100 ICON "../resources/uninstall.ico"
+100 ICON "${JL_ICON_PATH}"
 // version info
 1 VERSIONINFO
 FILEVERSION     1,0,0,0
@@ -26,5 +26,4 @@ BEGIN
         VALUE "Translation", 0x0409, 0x04E4
     END
 END
-// manifest
-1 RT_MANIFEST "../resources/launcher.exe.manifest"
+
